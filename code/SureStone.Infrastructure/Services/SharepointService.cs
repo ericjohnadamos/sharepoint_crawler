@@ -68,18 +68,29 @@ public class SharepointService : ISharepointService
             {
                 try
                 {
+                    var archivedFolderPath
+                        = GetArchivedFolderPathFromSharePointRelativeUrl(file.FileDirectory, archivedFolder);
+                    var archivedFilePath
+                        = $"{GetArchivedFolderPathFromSharePointRelativeUrl(file.FilePath, archivedFolder)}";
+                    try
+                    {
+                        // Whenever the file is already in the archived folder, marked as done instantly and skip
+                        web.EnsureFileExists(archivedFilePath);
+                        file.IsDone = true;
+                        continue;
+                    }
+                    catch (Exception)
+                    {
+                    }
+
                     // Ensure the source and target folder exists
                     var sourceFolder = web.EnsureFolderExists(file.FileDirectory, false);
                     web.EnsureFileExists(file.FilePath);
-
-                    var archivedFolderPath
-                        = GetArchivedFolderPathFromSharePointRelativeUrl(file.FileDirectory, archivedFolder);
                     web.EnsureFolderExists(archivedFolderPath, true);
 
                     // Prepare the source file and target file urls
                     var sourceFile = $"{serverAuthoritySegmentUrl}{file.FilePath}";
-                    var targetFile = $"{serverAuthoritySegmentUrl}" +
-                        $"{GetArchivedFolderPathFromSharePointRelativeUrl(file.FilePath, archivedFolder)}";
+                    var targetFile = $"{serverAuthoritySegmentUrl}{archivedFilePath}";
 
                     var moveCopyOptions = new MoveCopyOptions
                     {
