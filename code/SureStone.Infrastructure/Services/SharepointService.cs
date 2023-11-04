@@ -270,8 +270,12 @@ public class SharepointService : ISharepointService
     }
 
     public async Task BeginAuditing(
-        string authenticationBearerToken, string targetWebsiteUrl, PerformContext? performContext = null)
+        string authenticationBearerToken,
+        string targetWebsiteUrl,
+        string archivedFolder = "GDPR Archive",
+        PerformContext? performContext = null)
     {
+        // Gather only the finished items
         var archivedItems = await dbContext.ArchivedFiles.Where(a => a.IsDone).ToListAsync();
         if (!(archivedItems?.Any() ?? false))
             return;
@@ -282,24 +286,26 @@ public class SharepointService : ISharepointService
 
         foreach (var archivedItem in archivedItems)
         {
-            var file = web.GetFileByServerRelativeUrl(archivedItem.FilePath);
+            // Compose the archived directory and check it's there
+            var archivedFilePath
+                = $"{GetArchivedFolderPathFromSharePointRelativeUrl(archivedItem.FilePath, archivedFolder)}";
             try
             {
-                sharepointClientContext.Load(file);
-                sharepointClientContext.ExecuteQuery();
-
-                // If the file is still here, then report it to the logger
-                performContext?.LogError($"Archived item ID: {archivedItem.Id} and file path: {archivedItem.FilePath}");
+                web.EnsureFileExists(archivedFilePath);
             }
-            catch (ServerException ex)
+            catch (ServerException ex) when (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
             {
-                // Check if the exception is because the file is not found
-                if (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
-                {
-                    // This is the expected output
-                    continue;
-                }
-                throw;  // If it's some other exception, re-throw it
+                performContext?.LogError(ex.Message);
+                performContext?.LogError(
+                    $"File not found - file Id: {archivedItem.Id} and file location: {archivedItem.FilePath}");
+            }
+            catch (Exception ex)
+            {
+                performContext?.LogError(ex.Message);
+            }
+            finally
+            {
+                Thread.Sleep(300);
             }
         }
     }
@@ -359,10 +365,11 @@ public class SharepointService : ISharepointService
         this.backgroundJobClient.Enqueue<ISharepointService>(service => service.BeginTruncateCrawledFiles());
     }
 
-    public void QueueAuditing(string authenticationBearerToken, string targetWebsiteUrl)
+    public void QueueAuditing(
+        string authenticationBearerToken, string targetWebsiteUrl, string archivedFolder = "GDPR Archive")
     {
         this.backgroundJobClient.Enqueue<ISharepointService>(
-            service => service.BeginAuditing(authenticationBearerToken, targetWebsiteUrl, null));
+            service => service.BeginAuditing(authenticationBearerToken, targetWebsiteUrl, archivedFolder, null));
     }
 
     public void SharepointClientContextExecutingWebRequest(WebRequestEventArgs e, string authenticationBearerToken)

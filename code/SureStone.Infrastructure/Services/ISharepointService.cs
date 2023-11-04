@@ -53,9 +53,13 @@
             int numberOfItemsPerBatchExecution = 5_000,
             PerformContext? performContext = null);
 
-        void QueueAuditing(string authenticationBearerToken, string targetWebsiteUrl);
+        void QueueAuditing(
+            string authenticationBearerToken, string targetWebsiteUrl, string archivedFolder = "GDPR Archive");
         Task BeginAuditing(
-            string authenticationBearerToken, string targetWebsiteUrl, PerformContext? performContext = null);
+            string authenticationBearerToken,
+            string targetWebsiteUrl,
+            string archivedFolder = "GDPR Archive",
+            PerformContext? performContext = null);
 
         void QueueQueryPerformanceCheck();
         Task BeginQueryPerformanceCheck(PerformContext? performContext = null);
