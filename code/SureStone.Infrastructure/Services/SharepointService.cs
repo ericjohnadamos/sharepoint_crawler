@@ -38,7 +38,7 @@ public class SharepointService : ISharepointService
     public async Task BeginArchiving(
         string authenticationBearerToken, 
         string targetWebsiteUrl,
-        string archivedFolder = "Archived",
+        string archivedFolder = "GDPR Archive",
         int totalNumberOfItemsToArchive = 10,
         int numberOfItemsPerBatch = 10,
         PerformContext? performContext = null)
@@ -306,7 +306,7 @@ public class SharepointService : ISharepointService
     public void QueueArchiving(
         string authorisationBearerToken,
         string targetWebsiteUrl,
-        string archivedFolder = "Archived",
+        string archivedFolder = "GDPR Archive",
         int totalNumberOfItemsToArchive = 10,
         int numberOfItemsPerBatch = 10)
     {
@@ -425,7 +425,7 @@ public class SharepointService : ISharepointService
     }
 
     private static string GetArchivedFolderPathFromSharePointRelativeUrl(
-        string relativeUrl, string archivedFolder = "Archived")
+        string relativeUrl, string archivedFolder = "GDPR Archive")
     {
         // The relative url format is "/sites/Shared/Shared Documents/Source/LayerA/LayerAA/Contract"
         // Replace "Source" with the archived folder

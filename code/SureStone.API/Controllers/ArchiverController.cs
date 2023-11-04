@@ -21,7 +21,7 @@ public class ArchiverController : ControllerBase
     public IActionResult Execute(
         string authorisationBearerToken,
         string targetWebsiteUrl,
-        string archivedFolder = "Archived",
+        string archivedFolder = "GDPR Archive",
         int totalNumberOfItemsToArchive = 10,
         int numberOfItemsPerBatch = 10)
     {

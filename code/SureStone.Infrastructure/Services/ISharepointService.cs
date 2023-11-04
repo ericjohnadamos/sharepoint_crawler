@@ -24,14 +24,14 @@
         void QueueArchiving(
             string authorisationBearerToken,
             string targetWebsiteUrl,
-            string archivedFolder = "Archived",
+            string archivedFolder = "GDPR Archive",
             int totalNumberOfItemsToArchive = 10,
             int numberOfItemsPerBatch = 10);
 
         Task BeginArchiving(
             string authenticationBearerToken,
             string targetWebsiteUrl,
-            string archivedFolder = "Archived",
+            string archivedFolder = "GDPR Archive",
             int totalNumberOfItemsToArchive = 10,
             int numberOfItemsPerBatch = 10,
             PerformContext? performContext = null);
