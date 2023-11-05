@@ -19,9 +19,14 @@ public class AuditController : ControllerBase
 
     [HttpPost]
     public IActionResult Execute(
-        string authorisationBearerToken, string targetWebsiteUrl, string archivedFolder = "GDPR Archive")
+        string authorisationBearerToken,
+        string targetWebsiteUrl,
+        string archivedFolder = "GDPR Archive",
+        int startIndex = 0,
+        int totalItemsToAudit = 20_000)
     {
-        this.sharepointService.QueueAuditing(authorisationBearerToken, targetWebsiteUrl, archivedFolder);
+        this.sharepointService.QueueAuditing(
+            authorisationBearerToken, targetWebsiteUrl, archivedFolder, startIndex, totalItemsToAudit);
         return this.Ok($"The system is now starting to audit files.");
     }
 

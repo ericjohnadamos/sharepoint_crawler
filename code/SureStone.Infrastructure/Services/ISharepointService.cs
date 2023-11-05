@@ -54,11 +54,17 @@
             PerformContext? performContext = null);
 
         void QueueAuditing(
-            string authenticationBearerToken, string targetWebsiteUrl, string archivedFolder = "GDPR Archive");
+            string authenticationBearerToken,
+            string targetWebsiteUrl,
+            string archivedFolder = "GDPR Archive",
+            int startIndex = 0,
+            int totalItemsToAudit = 20_000);
         Task BeginAuditing(
             string authenticationBearerToken,
             string targetWebsiteUrl,
             string archivedFolder = "GDPR Archive",
+            int startIndex = 0,
+            int totalItemsToAudit = 20_000,
             PerformContext? performContext = null);
 
         void QueueQueryPerformanceCheck();

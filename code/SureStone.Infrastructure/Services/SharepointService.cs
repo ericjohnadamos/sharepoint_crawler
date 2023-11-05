@@ -273,10 +273,16 @@ public class SharepointService : ISharepointService
         string authenticationBearerToken,
         string targetWebsiteUrl,
         string archivedFolder = "GDPR Archive",
+        int startIndex = 0,
+        int totalItemsToAudit = 20_000,
         PerformContext? performContext = null)
     {
         // Gather only the finished items
-        var archivedItems = await dbContext.ArchivedFiles.Where(a => a.IsDone).ToListAsync();
+        var archivedItems = await dbContext.ArchivedFiles
+            .OrderBy(a => a.Id)
+            .Skip(startIndex)
+            .Take(totalItemsToAudit)
+            .Where(a => a.IsDone).ToListAsync();
         if (!(archivedItems?.Any() ?? false))
             return;
 
@@ -305,7 +311,7 @@ public class SharepointService : ISharepointService
             }
             finally
             {
-                Thread.Sleep(300);
+                Thread.Sleep(200);
             }
         }
     }
@@ -366,10 +372,20 @@ public class SharepointService : ISharepointService
     }
 
     public void QueueAuditing(
-        string authenticationBearerToken, string targetWebsiteUrl, string archivedFolder = "GDPR Archive")
+        string authenticationBearerToken,
+        string targetWebsiteUrl,
+        string archivedFolder = "GDPR Archive",
+        int startIndex = 0,
+        int totalItemsToAudit = 20_000)
     {
         this.backgroundJobClient.Enqueue<ISharepointService>(
-            service => service.BeginAuditing(authenticationBearerToken, targetWebsiteUrl, archivedFolder, null));
+            service => service.BeginAuditing(
+                authenticationBearerToken,
+                targetWebsiteUrl,
+                archivedFolder,
+                startIndex,
+                totalItemsToAudit,
+                null));
     }
 
     public void SharepointClientContextExecutingWebRequest(WebRequestEventArgs e, string authenticationBearerToken)
