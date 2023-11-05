@@ -108,8 +108,6 @@ public class SharepointService : ISharepointService
 
                     // Delete the source folder if empty. Only uncomment if they asked you to do it.
                     //sourceFolder.DeleteIfEmpty();
-
-                    performContext?.LogInformation($"Processed items: {++processedItemCount} out of {totalArchivedItems}");
                 }
                 catch (ServerException ex) when (ex.ServerErrorTypeName == "System.IO.FileNotFoundException")
                 {
@@ -124,6 +122,7 @@ public class SharepointService : ISharepointService
                 }
                 finally
                 {
+                    performContext?.LogInformation($"Processed items: {++processedItemCount} out of {totalArchivedItems}");
                     Thread.Sleep(300);
                 }
             }
