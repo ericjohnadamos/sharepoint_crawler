@@ -1,53 +1,57 @@
 # Archiver
 
-The Archiver application serves to crawl, archive files, and perform audits within SharePoint directories. Initially designed for Surestone, it is versatile enough to be adapted for use with other SharePoint instances.
+This is an application that its primary purpose is to crawl data, archive files and audit within the sharepoint directory. This is exclusive for Surestone but can be used in other Sharepoint directory.
 
 ## Features
 
-- **Hangfire Service**: Facilitates background processing and easy tracking of tasks.
-- **Swagger UI**: Provides a convenient interface for API interaction, removing the need for tools like Postman.
-- **Crawler**: Traverses SharePoint directories starting from a specified root directory.
-- **Microsoft File Date Corrector**: Corrects file creation dates for Microsoft files, which typically display the date they were uploaded to SharePoint rather than their actual creation date.
-- **Archiver**: Moves files to a specified root directory, preserving the original folder hierarchy.
-- **Audit**: Verifies that files are moved correctly and placed in the intended location.
+- Hangfire service (to run the process in the background and track them easily)
+- Swagger UI (convenience in calling APIs rather than doing a manual request such as POSTMAN)
+- Crawler (read through the entire Sharepoint based from the given root directory)
+- Crawler's Microsoft File Date Corrector (Microsoft files has a record of their own file creation date rather than the date that it was uploaded in Sharepoint)
+- Archiver (responsible for moving all crawled files to a given root directory with retained folder heirarchy)
+- Audit (checker for the moved files, making sure that they are moved in the right place)
 
 ## Technologies
 
-This project is built with:
-- .NET 7.0
-- C# 11.0
-- MySQL 8.0.35
-- Hangfire Core 1.7.36
-- Hangfire Jobs Logger 0.2.1
-- Z Entity Framework 7.100.0.5 (Latest packages available for a free trial on their [website](https://entityframework-extensions.net/))
+Project is created with:
+- .NET version: 7.0
+- C# version: 11.0
+- MySQL version: 8.0.35
+- Hangfire core version: 1.7.36
+- Hangire jobs logger version: 0.2.1
+- Z entity framework: 7.100.0.5 (you can download the latest package on their site for free trial)
 
 ## Getting Started
 
-To set up the project:
+When you received the copy, I probably going to give it to you as a compressed file. The best approach is to store it in a repository (github / bitbucket) for better version management.
 
-1. Extract the provided compressed file to your local machine.
-2. Initialize a new repository on GitHub or Bitbucket to enable version control.
-3. Open the solution file `/code/SureStone.Archiver.sln` in Visual Studio.
-4. Set `SureStone.API` as the startup project.
-5. Update the connection string in `SureStone.API/appsettings.json`. For development, consider creating `appsettings.Development.json` and exclude it from version control.
-6. Use Package Manager Console to run `Update-Database`, setting up the initial database schema.
-7. Build the project, which will also download any necessary NuGet packages.
-8. Run the application to automatically generate Hangfire tables in your database schema.
+To run the project, you just need to open "/code/SureStone.Archiver.sln" file in Visual Studio and do the following:
+
+1. Set "SureStone.API" as the startup project
+2. Update SureStone.API/appsettings.json's connection string (as for development, it is better to just create appsettings.Development.json and mark it as ignored files)
+3. Open Tools > NuGet Package Manager > Package Manager Console and type "Update-Database"
+4. Build the project to automatically download the required packages
+5. Run the system to automatically create hangfire tables in the schema
+
+
+URL guide:
+- Go to "/swagger" to see the available APIs
+- Go to "/hangfire" to see the running process
+
 
 ### Prerequisites
 
+List of things you need to use the software and how to install them.
 - Visual Studio 2022
-- [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-- [MySQL 8.0.35](https://dev.mysql.com/downloads/mysql/)
+- .NET version: 7.0 (https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+- MySQL version: 8.0.35 (https://dev.mysql.com/downloads/mysql)
 
 ## Deployment
 
-For production deployment:
+If you wish to publish the code in production, make sure that you installed "ASP.NET Core Runtime 7.0.13" on the server.
 
-1. Ensure that "ASP.NET Core Runtime 7.0.13" is installed on the server.
-2. Execute `dotnet publish -c Release -o ./publish` in the Package Manager Console to prepare a release build.
-3. The output will be in the `/code/publish` directory, ready for deployment.
+Open Tools > NuGet Package Manager > Package Manager Console and type "dotnet publish -c Release -o ./publish" will rebuild your system and make a released directory under "/code".
 
 ## Support
 
-For further inquiries or support, contact me at [ericjohnadamos@gmail.com](mailto:ericjohnadamos@gmail.com).
+If you have any further questions to the system, you can email me at ericjohnadamos@gmail.com.
