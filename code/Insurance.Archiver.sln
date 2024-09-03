@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insurance.API", "SureStone.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insurance.Infrastructure", "SureStone.Infrastructure\Insurance.Infrastructure.csproj", "{670106E4-A911-44A0-817D-EE99BD407AEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insurance.Domain", "SureStone.Domain\Insurance.Domain.csproj", "{ACD502DD-6973-4067-B9A2-32EB81A633E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Insurance.Domain", "Insurance.Domain\Insurance.Domain.csproj", "{ACD502DD-6973-4067-B9A2-32EB81A633E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
