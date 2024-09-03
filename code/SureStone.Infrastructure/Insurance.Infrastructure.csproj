@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SureStone.Domain\SureStone.Domain.csproj" />
+    <ProjectReference Include="..\SureStone.Domain\Insurance.Domain.csproj" />
   </ItemGroup>
 
 </Project>

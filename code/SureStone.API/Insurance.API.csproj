@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SureStone.Domain\SureStone.Domain.csproj" />
-    <ProjectReference Include="..\SureStone.Infrastructure\SureStone.Infrastructure.csproj" />
+    <ProjectReference Include="..\SureStone.Domain\Insurance.Domain.csproj" />
+    <ProjectReference Include="..\SureStone.Infrastructure\Insurance.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
