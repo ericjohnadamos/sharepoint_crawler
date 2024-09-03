@@ -19,12 +19,12 @@ public class SharepointService : ISharepointService
 {
     private readonly IBackgroundJobClient backgroundJobClient;
     private readonly IMapper mapper;
-    private readonly SureStoneDbContext dbContext;
+    private readonly InsuranceDbContext dbContext;
 
     const string SHARED_FOLDER = "Shared Documents";
 
     public SharepointService(
-        IBackgroundJobClient backgroundJobClient, IMapper mapper, SureStoneDbContext dbContext)
+        IBackgroundJobClient backgroundJobClient, IMapper mapper, InsuranceDbContext dbContext)
     {
         Contract.Assert(backgroundJobClient != null);
         Contract.Assert(mapper != null);

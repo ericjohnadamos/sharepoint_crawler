@@ -1,6 +1,6 @@
 # Archiver
 
-The Archiver application serves to crawl, archive files, and perform audits within SharePoint directories. Initially designed for Surestone, it is versatile enough to be adapted for use with other SharePoint instances.
+The Archiver application serves to crawl, archive files, and perform audits within SharePoint directories. Initially designed for Insurance, it is versatile enough to be adapted for use with other SharePoint instances.
 
 ## Features
 
@@ -27,9 +27,9 @@ To set up the project:
 
 1. Extract the provided compressed file to your local machine.
 2. Initialize a new repository on GitHub or Bitbucket to enable version control.
-3. Open the solution file `/code/SureStone.Archiver.sln` in Visual Studio.
-4. Set `SureStone.API` as the startup project.
-5. Update the connection string in `SureStone.API/appsettings.json`. For development, consider creating `appsettings.Development.json` and exclude it from version control.
+3. Open the solution file `/code/Insurance.Archiver.sln` in Visual Studio.
+4. Set `Insurance.API` as the startup project.
+5. Update the connection string in `Insurance.API/appsettings.json`. For development, consider creating `appsettings.Development.json` and exclude it from version control.
 6. Use Package Manager Console to run `Update-Database`, setting up the initial database schema.
 7. Build the project, which will also download any necessary NuGet packages.
 8. Run the application to automatically generate Hangfire tables in your database schema.

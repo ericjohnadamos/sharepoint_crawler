@@ -52,15 +52,15 @@ services.AddHangfire(config =>
         .UseColouredConsoleLogProvider();
 });
 
-services.AddDbContext<SureStoneDbContext>(async optionsBuilder =>
+services.AddDbContext<InsuranceDbContext>(async optionsBuilder =>
 {
 #pragma warning disable CS8604 // Possible null reference argument.
     optionsBuilder.UseMySQL(connectionString);
 #pragma warning restore CS8604 // Possible null reference argument.
 
     // Make sure that the database is created
-    var dbContextOptions = (DbContextOptions<SureStoneDbContext>)optionsBuilder.Options;
-    using var dbContext = new SureStoneDbContext(dbContextOptions);
+    var dbContextOptions = (DbContextOptions<InsuranceDbContext>)optionsBuilder.Options;
+    using var dbContext = new InsuranceDbContext(dbContextOptions);
     await dbContext.Database.EnsureCreatedAsync();
 });
 

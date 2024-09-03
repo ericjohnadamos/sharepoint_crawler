@@ -4,13 +4,13 @@
     using Insurance.Domain.Entities;
 
     // Code-Based Configuration and Dependency resolution
-    public class SureStoneDbContext : DbContext
+    public class InsuranceDbContext : DbContext
     {
         public virtual DbSet<CrawledFiles> CrawledFiles { get; set; }
 
         public virtual DbSet<ArchivedFiles> ArchivedFiles { get; set; }
 
-        public SureStoneDbContext(DbContextOptions<SureStoneDbContext> options)
+        public InsuranceDbContext(DbContextOptions<InsuranceDbContext> options)
             : base(options)
         {
         }

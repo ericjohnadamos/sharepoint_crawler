@@ -10,7 +10,7 @@ using Insurance.Infrastructure.Persistence;
 
 namespace Insurance.Infrastructure.Migrations
 {
-    [DbContext(typeof(SureStoneDbContext))]
+    [DbContext(typeof(InsuranceDbContext))]
     [Migration("20231026172139_Initial-Migration")]
     partial class InitialMigration
     {
@@ -22,7 +22,7 @@ namespace Insurance.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SureStone.Domain.Entities.ArchivedFiles", b =>
+            modelBuilder.Entity("Insurance.Domain.Entities.ArchivedFiles", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace Insurance.Infrastructure.Migrations
                     b.ToTable("archived_files");
                 });
 
-            modelBuilder.Entity("SureStone.Domain.Entities.CrawledFiles", b =>
+            modelBuilder.Entity("Insurance.Domain.Entities.CrawledFiles", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
