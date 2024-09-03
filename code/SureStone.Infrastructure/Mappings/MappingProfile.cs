@@ -1,8 +1,8 @@
-﻿namespace SureStone.Infrastructure.Mappings;
+﻿namespace Insurance.Infrastructure.Mappings;
 
 using AutoMapper;
-using SureStone.Domain.Entities;
-using SureStone.Infrastructure.Extensions;
+using Insurance.Domain.Entities;
+using Insurance.Infrastructure.Extensions;
 
 public class MappingProfile : Profile
 {

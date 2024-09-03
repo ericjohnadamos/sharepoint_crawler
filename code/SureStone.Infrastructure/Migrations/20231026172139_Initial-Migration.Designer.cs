@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SureStone.Infrastructure.Persistence;
+using Insurance.Infrastructure.Persistence;
 
 #nullable disable
 
-namespace SureStone.Infrastructure.Migrations
+namespace Insurance.Infrastructure.Migrations
 {
     [DbContext(typeof(SureStoneDbContext))]
     [Migration("20231026172139_Initial-Migration")]

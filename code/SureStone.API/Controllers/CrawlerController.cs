@@ -1,7 +1,7 @@
-﻿namespace SureStone.API.Controllers;
+﻿namespace Insurance.API.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
-using SureStone.Infrastructure.Services;
+using Insurance.Infrastructure.Services;
 using System.Diagnostics.Contracts;
 
 [ApiController]
@@ -30,7 +30,7 @@ public class CrawlerController : ControllerBase
     [HttpPost]
     public IActionResult Execute(
         string authorisationBearerToken,
-        string targetWebsiteUrl = "https://surestoneinsuranceie.sharepoint.com/sites/FileShare/",
+        string targetWebsiteUrl = "https://insuranceie.sharepoint.com/sites/FileShare/",
         int numberOfItemsPerBatchExecution = 5_000)
     {
         this.sharepointService.QueueCrawler(
@@ -54,7 +54,7 @@ public class CrawlerController : ControllerBase
     [HttpPost]
     public IActionResult UpdateMicrosoftFilesOriginDates(
         string authorisationBearerToken,
-        string targetWebsiteUrl = "https://surestoneinsuranceie.sharepoint.com/sites/FileShare/",
+        string targetWebsiteUrl = "https://insuranceie.sharepoint.com/sites/FileShare/",
         int numberOfItemsPerBatchExecution = 5_000)
     {
         this.sharepointService.QueueUpdateMicrosoftFilesOriginDates(

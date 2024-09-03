@@ -1,7 +1,7 @@
-﻿namespace SureStone.API.Controllers;
+﻿namespace Insurance.API.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
-using SureStone.Infrastructure.Services;
+using Insurance.Infrastructure.Services;
 using System.Diagnostics.Contracts;
 
 [ApiController]
@@ -32,7 +32,7 @@ public class ArchiverController : ControllerBase
     [HttpPost]
     public IActionResult Execute(
         string authorisationBearerToken,
-        string targetWebsiteUrl = "https://surestoneinsuranceie.sharepoint.com/sites/FileShare/",
+        string targetWebsiteUrl = "https://insuranceie.sharepoint.com/sites/FileShare/",
         string archivedFolder = "GDPR Archive",
         int totalNumberOfItemsToArchive = 10,
         int numberOfItemsPerBatchExecution = 10)

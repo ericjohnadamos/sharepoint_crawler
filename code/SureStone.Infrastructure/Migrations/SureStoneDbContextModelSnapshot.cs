@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SureStone.Infrastructure.Persistence;
+using Insurance.Infrastructure.Persistence;
 
 #nullable disable
 
-namespace SureStone.Infrastructure.Migrations
+namespace Insurance.Infrastructure.Migrations
 {
     [DbContext(typeof(SureStoneDbContext))]
     partial class SureStoneDbContextModelSnapshot : ModelSnapshot

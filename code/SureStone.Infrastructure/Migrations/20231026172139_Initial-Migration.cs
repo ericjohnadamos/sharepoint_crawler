@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SureStone.Infrastructure.Migrations
+namespace Insurance.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

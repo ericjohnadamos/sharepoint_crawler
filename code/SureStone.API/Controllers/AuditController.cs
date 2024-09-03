@@ -1,7 +1,7 @@
-﻿namespace SureStone.API.Controllers;
+﻿namespace Insurance.API.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
-using SureStone.Infrastructure.Services;
+using Insurance.Infrastructure.Services;
 using System.Diagnostics.Contracts;
 
 [ApiController]
@@ -32,7 +32,7 @@ public class AuditController : ControllerBase
     [HttpPost]
     public IActionResult Execute(
         string authorisationBearerToken,
-        string targetWebsiteUrl = "https://surestoneinsuranceie.sharepoint.com/sites/FileShare/",
+        string targetWebsiteUrl = "https://insuranceie.sharepoint.com/sites/FileShare/",
         string archivedFolder = "GDPR Archive",
         int startIndex = 0,
         int totalItemsToAudit = 20_000)
@@ -56,7 +56,7 @@ public class AuditController : ControllerBase
     [HttpPost]
     public IActionResult FileCheck(
         string authorisationBearerToken,
-        string targetWebsiteUrl = "https://surestoneinsuranceie.sharepoint.com/sites/FileShare/",
+        string targetWebsiteUrl = "https://insuranceie.sharepoint.com/sites/FileShare/",
         string filePathToCheck = "/sites/FileShare/Shared Documents/sample.doc")
     {
         this.sharepointService.QueueFileChecking(authorisationBearerToken, targetWebsiteUrl, filePathToCheck);

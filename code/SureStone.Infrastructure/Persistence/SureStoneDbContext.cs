@@ -1,7 +1,7 @@
-﻿namespace SureStone.Infrastructure.Persistence
+﻿namespace Insurance.Infrastructure.Persistence
 {
     using Microsoft.EntityFrameworkCore;
-    using SureStone.Domain.Entities;
+    using Insurance.Domain.Entities;
 
     // Code-Based Configuration and Dependency resolution
     public class SureStoneDbContext : DbContext

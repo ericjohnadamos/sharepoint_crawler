@@ -1,4 +1,4 @@
-﻿namespace SureStone.Infrastructure.Services
+﻿namespace Insurance.Infrastructure.Services
 {
     using Hangfire.Server;
 

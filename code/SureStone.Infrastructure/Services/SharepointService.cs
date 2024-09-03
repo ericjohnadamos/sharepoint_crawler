@@ -1,4 +1,4 @@
-﻿namespace SureStone.Infrastructure.Services;
+﻿namespace Insurance.Infrastructure.Services;
 
 using AutoMapper;
 using Hangfire;
@@ -6,9 +6,9 @@ using Hangfire.JobsLogger;
 using Hangfire.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.SharePoint.Client;
-using SureStone.Domain.Entities;
-using SureStone.Infrastructure.Extensions;
-using SureStone.Infrastructure.Persistence;
+using Insurance.Domain.Entities;
+using Insurance.Infrastructure.Extensions;
+using Insurance.Infrastructure.Persistence;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;

@@ -1,4 +1,4 @@
-﻿namespace SureStone.Infrastructure.Extensions;
+﻿namespace Insurance.Infrastructure.Extensions;
 
 public static class CustomLinqExtensions
 {

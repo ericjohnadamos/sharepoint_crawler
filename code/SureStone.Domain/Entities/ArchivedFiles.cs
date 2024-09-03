@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor
 
-namespace SureStone.Domain.Entities;
+namespace Insurance.Domain.Entities;
 
 using System.ComponentModel.DataAnnotations.Schema;
 

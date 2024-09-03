@@ -2,9 +2,9 @@ using Hangfire;
 using Hangfire.JobsLogger;
 using Hangfire.MySql;
 using Microsoft.EntityFrameworkCore;
-using SureStone.Infrastructure.Mappings;
-using SureStone.Infrastructure.Persistence;
-using SureStone.Infrastructure.Services;
+using Insurance.Infrastructure.Mappings;
+using Insurance.Infrastructure.Persistence;
+using Insurance.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
